@@ -1,0 +1,30 @@
+.Event-card {
+    width: 95%;
+    max-width: 800px;
+    height: 120px;
+    box-shadow: 0 0 8px 1px gray;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 16px;
+}
+
+.Event-card-content {
+    display: flex;
+    margin: 8px 16px;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+}
+
+.Event-card-date {
+    width: 90px;
+    height: 90px;
+    background-color: #FFFA90;
+    border-radius: 50px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 0 4px 0px gray;
+}

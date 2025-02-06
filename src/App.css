@@ -24,18 +24,8 @@
   gap: 8px;
   width: 33%;
   height: 100%;
-  background-color: var(--md-sys-color-tertiary); 
   color: var(--md-sys-color-on-tertiary);
   cursor: pointer;
-}
-
-.App-header {
-  width: 100%;
-  height: 90px;
-  background-color: var(--md-sys-color-primary);
-  position: sticky;
-  top: 0;
-  z-index: 100;
 }
 
 .Homepage {
@@ -54,4 +44,35 @@
 
 .padding-horizontal-16 {
   padding: 0 16px
+}
+
+.margin-0 {
+  margin: 0;
+}
+
+.display-block {
+  display: block;
+}
+
+.container-color-primary {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+}
+
+.container-color-tertiary {
+  background-color: var(--md-sys-color-tertiary);
+  color: var(--md-sys-color-on-tertiary);
+}
+
+.container-color-secondary {
+  background-color: var(--md-sys-color-secondary);
+  color: var(--md-sys-color-on-secondary);
+}
+
+
+.jetbrains-mono-600 {
+  font-family: "JetBrains Mono", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
 }

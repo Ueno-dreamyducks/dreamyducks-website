@@ -1,0 +1,67 @@
+.Top-banner {
+  width: 100%;
+  height: 500px;
+  background-color: var(--md-sys-color-tertiary-container);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+.Top-banner-links {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  width: 100%;
+  height: 120px;
+  background-color: var(--md-sys-color-secondary-container);
+}
+
+.top-banner-link-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  width: 33.33%;
+  height: 100%;
+  color: var(--md-sys-color-on-tertiary);
+  cursor: pointer;
+}
+
+.App-header {
+  width: 100%;
+  height: 90px;
+  background-color: var(--md-sys-color-primary);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  color: var(--md-sys-color-on-primary);
+}
+
+.App-header-inside {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin: 0 8px;
+  align-items: center;
+}
+
+.Header-icon {
+  background-color: #525252;
+  padding: 8px;
+  border-radius: 50px;
+  margin: 0 8px;
+  cursor: pointer;
+}
+
+.Header-icon:hover {
+  box-shadow: 0 0 8px 1px gray;
+}
+
+.Homepage {
+  width: 100%;
+  height: calc(100vh - 90px);
+  background-color: var(--md-sys-color-surface-container);
+}
