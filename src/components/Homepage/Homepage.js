@@ -1,6 +1,6 @@
 import './Homepage.css';
 import githubIcon from '../../images/github-mark.svg';
-import { LayersOutlined, Schedule } from '@mui/icons-material';
+import { Event, LayersOutlined, Schedule } from '@mui/icons-material';
 import Header from '../Header/Header';
 
 function Homepage() {
@@ -26,7 +26,7 @@ function Homepage() {
                 <TopBannerItem
                     containerColor={"container-color-tertiary"}
                     link={"/calendar"}
-                    title={"Schedule"}
+                    title={"Calendar"}
                     subtitle={"View Upcoming Events"}
                     children={<Schedule sx={{ fontSize: "112px" }} />}
                 />
@@ -37,8 +37,8 @@ function Homepage() {
             </header>
             <div className='Homepage'>
                 <div className='padding-16'>
-                    <h1 className='no-margin'>aa</h1>
-                    <iframe src='/widget/calendar' title='calendar' />
+                    <h1 className='text-align-center padding-16' style={{verticalAlign: "middle"}}><Event sx={{fontSize: "36px", verticalAlign: "middle"}} /> Calendar</h1>
+                    <iframe src='/widget/calendar' title='calendar' width={"80%"} height={"700px"} style={{border: "none", boxShadow: "0 0 2px 2px gray"}} />
                 </div>
             </div>
         </div>

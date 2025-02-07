@@ -13,8 +13,8 @@ function Calendar() {
 
 export default Calendar;
 
-export function CalendarWidget() {
-  const [calendarEvents, setCalendarEvents] = useState([]);
+export function CalendarWidget({ events }) {
+  const [calendarUpcomings, setCalendarUpcomings] = useState([]);
   const webAppUrl = "https://script.google.com/macros/s/AKfycbyhbdnNxDDsu_oO2ZB7q1SobCeakhKedUKdWae7CEVhAywsYTGKZZbEZldGlo5vyhgH-Q/exec"; // Replace with your URL
 
   useEffect(() => {
@@ -22,32 +22,38 @@ export function CalendarWidget() {
       .then(response => response.json())
       .then(data => {
         if (Array.isArray(data)) {
-          console.log(data);
+          
+          const today = new Date();
+          var upComings = [];
+          for (var i = 0; i < data.length; i++) {
+            const date = new Date(data[i]['start']);
 
-          const formattedDates = data.map(dateString => {
-            const date = new Date(dateString['start']);
-            const year = date.getFullYear();
-            const month = String(date.getMonth() + 1).padStart(2, '0');
-            const day = String(date.getDate()).padStart(2, '0');
+            var year;
+            var month;
+            var day;
 
-            return { year: year, month: month, day: day };
-          })
-          setCalendarEvents(formattedDates);
+            if (today < date) {
+              year = date.getFullYear();
+              month = String(date.getMonth() + 1).padStart(2, '0');
+              day = String(date.getDate()).padStart(2, '0');
+
+              upComings.push({ year: year, month: month, day: day, title: data[i]["title"] })
+            }
+          }
+          setCalendarUpcomings(upComings);
         } else {
           console.error("Error: Invalid data received from server:", data);
-          // Handle the error, e.g., display a message to the user
         }
       })
       .catch(error => {
         console.error("Error fetching data:", error);
-        // Handle the error
       });
-  }, []); // Empty dependency array means this runs once on mount
+  }, []); 
 
   return (
     <div>
-      {calendarEvents.map((date, index) => (
-        <EventCard events={date} />
+      {calendarUpcomings.map((events, index) => (
+        <EventCard key={index} events={events} />
       ))}
 
     </div>
@@ -55,6 +61,7 @@ export function CalendarWidget() {
 }
 
 function EventCard({ events }) {
+  console.log("event month" + events.month)
   return (
     <div className='Event-card'>
       <div className='Event-card-content'>
@@ -63,7 +70,7 @@ function EventCard({ events }) {
           <h2 className='margin-0'>{events.day}</h2>
         </div>
         <div style={{ marginLeft: "12px" }}>
-          <h1>{events.year}</h1>
+          <h1>{events.title}</h1>
         </div>
       </div>
     </div>
