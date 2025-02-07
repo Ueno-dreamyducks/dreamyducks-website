@@ -5,7 +5,7 @@ import Header from '../Header/Header';
 
 function Homepage() {
     return (
-        <div>
+        <div className='container-color-surface'>
             <div className='Top-banner'>
                 <h1 className='jetbrains-mono-600'>dreamyducks</h1>
             </div>
@@ -36,9 +36,10 @@ function Homepage() {
                 <Header />
             </header>
             <div className='Homepage'>
-                <div className='padding-16'>
+                <div className='padding-16 container-color-surface'>
                     <h1 className='text-align-center padding-16' style={{verticalAlign: "middle"}}><Event sx={{fontSize: "36px", verticalAlign: "middle"}} /> Calendar</h1>
                     <iframe src='/widget/calendar' title='calendar' width={"80%"} height={"700px"} style={{border: "none", boxShadow: "0 0 2px 2px gray"}} />
+                    <h1>aaa</h1>
                 </div>
             </div>
         </div>
@@ -53,8 +54,8 @@ function TopBannerItem({ containerColor, link, title, subtitle, children }) {
             <div style={{ display: "flex", widows: "100%" }} className='padding-horizontal-16'>
                 {children}
                 <div>
-                    <h1>{title}</h1>
-                    <p>{subtitle}</p>
+                    <h1 className='banner-title'>{title}</h1>
+                    <p className='banner-subtitle'>{subtitle}</p>
                 </div>
             </div>
         </div>

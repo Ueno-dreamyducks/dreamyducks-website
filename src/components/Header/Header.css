@@ -23,6 +23,7 @@
     border-radius: 50px;
     margin: 0 8px;
     cursor: pointer;
+    
 }
 
 .Header-icon {
@@ -31,6 +32,8 @@
     border-radius: 50px;
     margin: 0 8px;
     cursor: pointer;
+    text-decoration: none;
+    color: white;
 }
 
 .Header-icon:hover {

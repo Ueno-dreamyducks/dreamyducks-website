@@ -13,7 +13,7 @@ function Calendar() {
 
 export default Calendar;
 
-export function CalendarWidget({ events }) {
+export function CalendarWidget() {
   const [calendarUpcomings, setCalendarUpcomings] = useState([]);
   const webAppUrl = "https://script.google.com/macros/s/AKfycbyhbdnNxDDsu_oO2ZB7q1SobCeakhKedUKdWae7CEVhAywsYTGKZZbEZldGlo5vyhgH-Q/exec"; // Replace with your URL
 
@@ -27,7 +27,9 @@ export function CalendarWidget({ events }) {
           var upComings = [];
           for (var i = 0; i < data.length; i++) {
             const date = new Date(data[i]['start']);
+            const timeOfDate = date.toLocaleString([], {hour: '2-digit', minute: "2-digit"});
 
+            console.log("time of date: " + timeOfDate);
             var year;
             var month;
             var day;
@@ -37,7 +39,7 @@ export function CalendarWidget({ events }) {
               month = String(date.getMonth() + 1).padStart(2, '0');
               day = String(date.getDate()).padStart(2, '0');
 
-              upComings.push({ year: year, month: month, day: day, title: data[i]["title"] })
+              upComings.push({ year: year, month: month, day: day, time: timeOfDate, title: data[i]["title"] })
             }
           }
           setCalendarUpcomings(upComings);
@@ -52,8 +54,8 @@ export function CalendarWidget({ events }) {
 
   return (
     <div>
-      {calendarUpcomings.map((events, index) => (
-        <EventCard key={index} events={events} />
+      {calendarUpcomings.map((data, index) => (
+        <EventCard key={index} events={data} />
       ))}
 
     </div>
@@ -68,6 +70,9 @@ function EventCard({ events }) {
         <div className='Event-card-date'>
           <h3 className='margin-0'>{getMonthName(Number(events.month))}</h3>
           <h2 className='margin-0'>{events.day}</h2>
+        </div>
+        <div style={{marginLeft: "12px" }}>
+          <p>{events.time}</p>
         </div>
         <div style={{ marginLeft: "12px" }}>
           <h1>{events.title}</h1>
