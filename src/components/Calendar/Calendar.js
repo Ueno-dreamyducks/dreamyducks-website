@@ -14,6 +14,7 @@ function Calendar() {
 export default Calendar;
 
 export function CalendarWidget() {
+  const [isCalendarReady, setLoadStatus] = useState(false);
   const [calendarUpcomings, setCalendarUpcomings] = useState([]);
   const webAppUrl = "https://script.google.com/macros/s/AKfycbyhbdnNxDDsu_oO2ZB7q1SobCeakhKedUKdWae7CEVhAywsYTGKZZbEZldGlo5vyhgH-Q/exec"; // Replace with your URL
 
@@ -22,12 +23,12 @@ export function CalendarWidget() {
       .then(response => response.json())
       .then(data => {
         if (Array.isArray(data)) {
-          
+
           const today = new Date();
           var upComings = [];
           for (var i = 0; i < data.length; i++) {
             const date = new Date(data[i]['start']);
-            const timeOfDate = date.toLocaleString([], {hour: '2-digit', minute: "2-digit"});
+            const timeOfDate = date.toLocaleString([], { hour: '2-digit', minute: "2-digit" });
 
             console.log("time of date: " + timeOfDate);
             var year;
@@ -42,6 +43,8 @@ export function CalendarWidget() {
               upComings.push({ year: year, month: month, day: day, time: timeOfDate, title: data[i]["title"] })
             }
           }
+          setLoadStatus(true);
+
           setCalendarUpcomings(upComings);
         } else {
           console.error("Error: Invalid data received from server:", data);
@@ -50,14 +53,21 @@ export function CalendarWidget() {
       .catch(error => {
         console.error("Error fetching data:", error);
       });
-  }, []); 
+  }, []);
 
   return (
     <div>
-      {calendarUpcomings.map((data, index) => (
-        <EventCard key={index} events={data} />
-      ))}
-
+      <div className={`${isCalendarReady ? "" : "Display-none"}`}>
+        {
+          calendarUpcomings.map((data, index) => (
+            <EventCard key={index} events={data} />
+          ))
+        }
+      </div>
+      <div style={{width: "100%", height: "100vh", display: "flex", justifyContent: "center", alignItems: "center"}}>
+        <div className={`${isCalendarReady ? "Display-none" : ""} Loading-spinner `}>
+        </div>
+      </div>
     </div>
   )
 }
@@ -71,7 +81,7 @@ function EventCard({ events }) {
           <h3 className='margin-0'>{getMonthName(Number(events.month))}</h3>
           <h2 className='margin-0'>{events.day}</h2>
         </div>
-        <div style={{marginLeft: "12px" }}>
+        <div style={{ marginLeft: "12px" }}>
           <p>{events.time}</p>
         </div>
         <div style={{ marginLeft: "12px" }}>

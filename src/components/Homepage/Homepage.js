@@ -18,7 +18,7 @@ function Homepage() {
                 />
                 <TopBannerItem
                     containerColor={"container-color-secondary"}
-                    link={""}
+                    link={"/projects"}
                     title={"Projects"}
                     subtitle={"View dreamyducks projects"}
                     children={<LayersOutlined sx={{ fontSize: "112px" }} />}
@@ -32,14 +32,15 @@ function Homepage() {
                 />
 
             </div>
-            <header>
-                <Header />
-            </header>
-            <div className='Homepage'>
-                <div className='padding-16 container-color-surface'>
-                    <h1 className='text-align-center padding-16' style={{verticalAlign: "middle"}}><Event sx={{fontSize: "36px", verticalAlign: "middle"}} /> Calendar</h1>
-                    <iframe src='/widget/calendar' title='calendar' width={"80%"} height={"700px"} style={{border: "none", boxShadow: "0 0 2px 2px gray"}} />
-                    <h1>aaa</h1>
+            <div>
+                <header className='stick-header'>
+                    <Header />
+                </header>
+                <div className='Homepage'>
+                    <div className='padding-16 container-color-surface'>
+                        <h1 className='text-align-center padding-16' style={{ verticalAlign: "middle" }}><Event sx={{ fontSize: "36px", verticalAlign: "middle" }} /> Calendar</h1>
+                        <iframe src='/widget/calendar' title='calendar' width={"80%"} height={"700px"} style={{ border: "none", boxShadow: "0 0 2px 2px gray" }} />
+                    </div>
                 </div>
             </div>
         </div>

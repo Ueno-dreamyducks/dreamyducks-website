@@ -1,0 +1,124 @@
+.Page-subject {
+    font-size: 8rem;
+    letter-spacing: 4px;
+    transform: scale(1.6, 1);
+    overflow-y: hidden;
+}
+
+.Body-frame {
+    display: flex;
+    flex-direction: row;
+}
+
+.Main-content {
+    width: 70%;
+
+    @media screen and (max-width: 1499px) {
+        width: 100%;
+    }
+}
+
+.Side-content {
+    width: 15%;
+    background-color: red;
+
+    @media screen and (max-width: 1499px) {
+        display: none;
+    }
+}
+
+.Project-card {
+    width: 100%;
+    height: 100px;
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    border-top: 1px solid var(--md-sys-color-outline-variant);
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.Border-left {
+    border-left: 2px dashed var(--md-sys-color-outline-variant);
+}
+
+.Project-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Project-title {
+    display: flex;
+    align-items: center;
+}
+
+.Project-action {
+    display: none;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Project-action.visit, .more {
+    display: flex;
+}
+
+.Expand-content {
+    display: flex;
+    top: 0;
+    height: 0px;
+    width: 0%;
+    background-color: var(--md-sys-color-surface-container-highest);
+    visibility: hidden;
+    overflow: hidden;
+    border-radius: 0 0 40px 40px;
+    transition-property: height, margin-bottom;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+}
+
+.Expand-content.open {
+    position:relative;
+    height: auto;
+    width: 100%;
+    margin-bottom: 20px;
+    visibility: visible;
+    transition: height 0.5s ease;
+}
+
+.Project-action:hover {
+    box-shadow: 0 0 8px 1px gray;
+
+}
+
+.Project-action-icon {
+    background-color: #0096FF;
+    padding: 8px;
+    border-radius: 50%;
+    margin: 0 8px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}
+
+
+/** More expand styling **/
+.Phone-image-frame {
+    width: 169px;
+    height: 300px;
+    background-color: azure;
+}
+
+.Project-button {
+    padding: 12px 20px;
+    font-weight: 600;
+    border: none;
+    font-size: 1.25rem;
+    border-radius: 50px;
+    cursor: pointer;
+}
