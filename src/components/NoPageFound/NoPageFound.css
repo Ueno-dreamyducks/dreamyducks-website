@@ -1,0 +1,28 @@
+.No-page-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(100vh - 130px);
+    flex-direction: column;
+}
+
+.Spinning-logo {
+    margin: 80px;
+    padding: 40px;
+    font-size: 5rem;
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    border-radius: 50%;
+    animation: spinning 5s linear infinite;
+}
+
+@keyframes spinning {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

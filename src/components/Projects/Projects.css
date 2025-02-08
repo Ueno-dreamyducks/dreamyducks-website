@@ -77,14 +77,12 @@
     visibility: hidden;
     overflow: hidden;
     border-radius: 0 0 40px 40px;
-    transition-property: height, margin-bottom;
-    transition-duration: 0.5s;
-    transition-timing-function: ease;
+    transition: height 0.5s ease;
 }
 
 .Expand-content.open {
     position:relative;
-    height: auto;
+    height: 300px;
     width: 100%;
     margin-bottom: 20px;
     visibility: visible;
@@ -108,6 +106,12 @@
 
 
 /** More expand styling **/
+.Project-more-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
 .Phone-image-frame {
     width: 169px;
     height: 300px;
@@ -121,4 +125,5 @@
     font-size: 1.25rem;
     border-radius: 50px;
     cursor: pointer;
+    text-decoration: none;
 }

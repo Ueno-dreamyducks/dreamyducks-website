@@ -1,8 +1,7 @@
 import './Projects.css';
-import { useState, Children } from "react"
+import { useState } from "react"
 import Header from "../Header/Header"
-import { ArrowForward, ExpandMore, Home, Launch, School } from '@mui/icons-material';
-import { Link } from '@mui/material';
+import { ArrowForward, ExpandMore, Launch, School } from '@mui/icons-material';
 
 function Projects() {
     const [headerColor, setHeaderColor] = useState("var(--md-sys-color-secondary-container");
@@ -30,12 +29,13 @@ function Projects() {
                     <h1>side content</h1>
                 </div>
                 <div className='text-align-center Main-content'>
-                    <ProjectCard icon={<School sx={{ fontSize: "72px", margin: "16px" }} />} title={"BloomBoard"} description={"Check HAC Grades"} isActionMore={true} >
-                        <div className='Phone-image-frame'>
+                    <ProjectCard icon={<School sx={{ fontSize: "72px", margin: "16px" }} />} title={"BloomBoard"} description={"Check HAC Grades"} isActionMore={true} height={`400px`} >
+                        <div className='Project-more-container Phone-image-frame'>
 
                         </div>
-                        <div className='padding-16' style={{textAlign: "right"}}>
-                            <button className='Project-button container-color-tertiary' onClick={{}}>Play Store <Launch sx={{verticalAlign: "middle"}}/></button>
+                        <div className='padding-16' style={{ textAlign: "right", alignSelf: "flex-end", display: 'flex', gap: "8px", justifyContent: "end" }}>
+                            <a href='/project/bloomboard' className='Project-button container-color-primary'>Explore</a>
+                            <button className='Project-button container-color-tertiary' onClick={{}}>Play Store <Launch sx={{ verticalAlign: "middle" }} /></button>
                         </div>
                     </ProjectCard>
                     <ProjectCard icon={<School sx={{ fontSize: "72px", margin: "16px" }} />} title={"BloomBoard"} description={"Check HAC Grades"} isActionMore={true} >
@@ -59,7 +59,7 @@ function Projects() {
 
 export default Projects;
 
-function ProjectCard({ icon, title, description, link, isActionVisit = false, isActionMore = false, children }) {
+function ProjectCard({ icon, title, description, link, isActionVisit = false, isActionMore = false, height, children }) {
     const [isOpen, setIsOpen] = useState(false);
 
     const handleOpenButton = () => {
@@ -92,8 +92,8 @@ function ProjectCard({ icon, title, description, link, isActionVisit = false, is
                     </div>
                 </div>
             </div>
-            <div className={`Expand-content ${isOpen ? "open" : ""}`}>
-                <div style={{padding: "8px 20px", width: "100%"}}>
+            <div className={`Expand-content ${isOpen ? "open" : ""}`} style={{ height: `${isOpen ? height : 0}` }} >
+                <div style={{ padding: "8px 20px", width: "100%" }}>
                     {children}
                 </div>
             </div>
