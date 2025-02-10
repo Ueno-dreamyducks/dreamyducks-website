@@ -21,7 +21,7 @@ function Projects() {
             <header className="stick-header">
                 <Header backgroundColor={headerColor} />
             </header>
-            <div className="text-align-center container-color-secondary-container" style={{ width: "100%", height: "333px", borderBottom: "4px solid var(--md-sys-color-primary", overflow: "hidden" }}>
+            <div className="text-align-center container-color-secondary-container" style={{ width: "100%", height: "25vw", borderBottom: "4px solid var(--md-sys-color-primary", overflow: "hidden" }}>
                 <h1 className="no-margin anton-regular Page-subject">PROJECTS</h1>
             </div>
             <div className='Body-frame'>
@@ -35,7 +35,7 @@ function Projects() {
                         </div>
                         <div className='padding-16' style={{ textAlign: "right", alignSelf: "flex-end", display: 'flex', gap: "8px", justifyContent: "end" }}>
                             <a href='/project/bloomboard' className='Project-button container-color-primary'>Explore</a>
-                            <button className='Project-button container-color-tertiary' onClick={{}}>Play Store <Launch sx={{ verticalAlign: "middle" }} /></button>
+                            <button className='Project-button container-color-tertiary' onClick={() => {}}>Play Store <Launch sx={{ verticalAlign: "middle" }} /></button>
                         </div>
                     </ProjectCard>
                     <ProjectCard icon={<School sx={{ fontSize: "72px", margin: "16px" }} />} title={"BloomBoard"} description={"Check HAC Grades"} isActionMore={true} >
@@ -65,7 +65,6 @@ function ProjectCard({ icon, title, description, link, isActionVisit = false, is
     const handleOpenButton = () => {
         if (isActionMore) {
             setIsOpen(!isOpen);
-            console.log(isOpen)
         }
     }
 
@@ -87,8 +86,8 @@ function ProjectCard({ icon, title, description, link, isActionVisit = false, is
                         <p className='margin-0'>Visit</p>
                     </div>
                     <div className={`Project-action ${isActionMore ? "more" : ""}`} onClick={handleOpenButton}>
-                        <ExpandMore sx={{ fontSize: "32px" }} className='Project-action-icon' />
-                        <p className='margin-0'>More</p>
+                        <ExpandMore sx={{ fontSize: "3vw" }} className='Project-action-icon' />
+                        <p className='margin-0' style={{fontSize: "1.75vw"}}>More</p>
                     </div>
                 </div>
             </div>

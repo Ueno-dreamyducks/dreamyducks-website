@@ -16,12 +16,57 @@
     align-items: center;
 }
 
-.Home-icon {
+.Header-pc-items {
+    display: block;
+    @media (max-width: 1000px) {
+        display: none;
+    }
+}
+.Header-sideMenu {
+    display: none;
+    @media (max-width: 1000px) {
+        display: block;
+    }
+}
+.Header-sideMenu-items {
+    display:flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 0px;
+    transition: all 0.25s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1;
+    text-align: left;
+    font-size: 1.25rem;
+    padding: 0 0 0 0;
+    visibility: hidden;
+    overflow-x: hidden;
+}
+.Header-sideMenu-items.open {
+    width: 100%;
+    transition: all ease 0.25s;
+    visibility: visible;
+}
+
+.Header-sideMenu-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     padding: 8px;
-    border-radius: 50px;
-    margin: 0 8px;
-    cursor: pointer;
-    
+}
+
+.Header-sideMenu-top {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+}
+
+.Align-center {
+    display: flex;
+    align-items: center;
 }
 
 .Header-icon {

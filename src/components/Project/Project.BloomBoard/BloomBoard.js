@@ -21,37 +21,40 @@ function BloomBoard() {
                 <Header backgroundColor={headerColor} />
             </header>
             <div className='text-align-center' style={{ overflow: "hidden" }}>
-                <div style={{ height: "200px", borderBottom: "4px solid var(--md-sys-color-primary", overflow: "hidden" }} className='container-color-secondary-container padding-hor' >
-                    <h1 className='anton-regular Page-subject' style={{ fontSize: "4rem" }}>BloomBoard</h1>
+                <div style={{ height: "25vw", borderBottom: "4px solid var(--md-sys-color-primary", overflow: "hidden" }} className='container-color-secondary-container padding-hor' >
+                    <h1 className='anton-regular Page-subject margin-0' style={{ fontSize: "10vw" }}>BloomBoard</h1>
                 </div>
                 <div className='Article-body-frame'>
-                    <h1 style={{ fontSize: "2.5rem" }}>About</h1>
-                    <div className='App-overview-container' style={{ maxWidth: "555px" }}>
-                        <h2 className='margin-0'>Overview</h2>
-                        <hr />
-                        <table style={{ width: "100%" }}>
-                            <tbody>
-                                <tr>
-                                    <td className='Article-table-title'>Name</td>
-                                    <td className='Article-table-data'>BloomBoard</td>
-                                </tr>
-                                <tr>
-                                    <td className='Article-table-title'>Platform</td>
-                                    <td className='Article-table-data'>Android</td>
-                                </tr>
-                                <tr>
-                                    <td className='Article-table-title'>Status</td>
-                                    <td className='Article-table-data'>Closed Test</td>
-                                </tr>
-                                <tr>
-                                    <td className='Article-table-title'>Version</td>
-                                    <td className='Article-table-data'>--</td>
-                                </tr>
-                            </tbody>
-
-                        </table>
+                    <div className='text-align-center'>
+                        <h1 style={{ fontSize: "2.5rem" }}>About</h1>
+                        <div className='App-overview-container' style={{ maxWidth: "555px" }}>
+                            <h2 className='margin-0'>Overview</h2>
+                            <hr />
+                            <table style={{ width: "100%" }}>
+                                <tbody>
+                                    <tr>
+                                        <td className='Article-table-title'>Name</td>
+                                        <td className='Article-table-data'>BloomBoard</td>
+                                    </tr>
+                                    <tr>
+                                        <td className='Article-table-title'>Platform</td>
+                                        <td className='Article-table-data'>Android</td>
+                                    </tr>
+                                    <tr>
+                                        <td className='Article-table-title'>Status</td>
+                                        <td className='Article-table-data'>Closed Test</td>
+                                    </tr>
+                                    <tr>
+                                        <td className='Article-table-title'>Version</td>
+                                        <td className='Article-table-data'>--</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    <p className='text-align-left margin-8' style={{ fontSize: "1.5rem" }}>aa</p>
+                    <h1 className='Article-header'>Features</h1>
+                    <h1 className='Article-header'>Links</h1>
+                    <p>Terms Of Service:</p>
                 </div>
             </div>
         </div>
