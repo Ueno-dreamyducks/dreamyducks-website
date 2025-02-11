@@ -1,9 +1,14 @@
 import { useState } from 'react';
 import Header from '../../Header/Header';
 import './BloomBoard.css';
+import ColorChangeScreen from '../../../images/BloomBoard/1000006604.png';
+import { ArrowBack, Circle, CircleOutlined } from '@mui/icons-material';
+import { CSSTransition } from 'react-transition-group';
 
 function BloomBoard() {
-    const [headerColor, setHeaderColor] = useState("var(--md-sys-color-secondary-container")
+    const [headerColor, setHeaderColor] = useState("var(--md-sys-color-secondary-container");
+    const [featureSelection, setSelection] =
+        useState(0);
 
     const handleScroll = () => {
         if (window.scrollY > 294) {
@@ -12,8 +17,12 @@ function BloomBoard() {
             setHeaderColor('var(--md-sys-color-secondary-container');
         }
     }
-
     window.addEventListener('scroll', handleScroll);
+
+    const handleFeatureSelectChange = (index) => {
+        console.log(`new index: ${index}`)
+        setSelection(index)
+    }
 
     return (
         <div>
@@ -53,6 +62,17 @@ function BloomBoard() {
                         </div>
                     </div>
                     <h1 className='Article-header'>Features</h1>
+                    <div>
+                        {features[featureSelection]}
+                    </div>
+                    <div className='Selector'>
+                        <form>
+                            <input type='radio' name='0' defaultChecked onClick={() => { handleFeatureSelectChange(0) }} />
+                            <input type='radio' name='0' onClick={() => { handleFeatureSelectChange(1) }} />
+                        </form>
+
+                    </div>
+
                     <h1 className='Article-header'>Links</h1>
                     <p>Terms Of Service:</p>
                 </div>
@@ -62,3 +82,14 @@ function BloomBoard() {
 }
 
 export default BloomBoard;
+
+const features = [
+    <div className='Article-paragraph-body container-color-surface-container-highest'>
+        <img src={ColorChangeScreen} width={"200px"} style={{ justifyItems: "center", borderRadius: "16px 0 0 16px" }} alt='Choose theme color' />
+        <h3 className='padding-horizontal-16 text-bold'>Choose Colour of Your Favorite</h3>
+    </div>,
+    <div className='Article-paragraph-body container-color-surface-container-highest'>
+        <h3 className='padding-horizontal-16 text-bold'>Choose Colour of Your Favorite</h3>
+        <img src={ColorChangeScreen} width={"200px"} style={{ marginLeft: "auto", borderRadius: "0 16px 16px 0" }} alt='Choose theme color' />
+    </div>
+]

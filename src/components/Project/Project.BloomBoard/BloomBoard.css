@@ -16,7 +16,7 @@
 
 .Article-header {
     border-left: 5px solid var(--md-sys-color-primary);
-    padding: 24px;
+    padding: 16px;
     font-weight: 800;
 }
 
@@ -35,6 +35,11 @@
     padding: 8px 0;
 }
 
+.Article-paragraph-body {
+    display: flex;
+    border-radius: 16px;
+}
+
 .Article-table-data {
     font-weight: bold;
     text-align: right;
@@ -45,3 +50,37 @@
     text-align: start;
     width: 50%;
 }
+
+.Selector {
+    background-color: var(--md-sys-color-tertiary-container);
+    padding: 4px 16px;
+    border-radius: 16px;
+    display: flex;
+    width: 200px;
+    align-items: center;
+    justify-content: center;
+    margin: 8px auto 0 auto;
+
+}
+
+.fade-enter {
+    opacity: 0;
+  }
+  
+  .fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in-out;
+  }
+  
+  .fade-exit {
+    opacity: 1;
+  }
+  
+  .fade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
+  }
+  
+  .fade-exit-done { /* Needed for unmountOnExit to work properly */
+      opacity: 0;
+  }

@@ -48,6 +48,7 @@
 }
 
 .padding-horizontal-16 {
+  font-size: 1.5rem;
   padding: 0 16px
 }
 
@@ -94,6 +95,10 @@
   text-decoration: none;
 }
 
+.text-bold {
+  font-weight: bold;
+}
+
 
 /** Display **/
 .display-block {
@@ -133,6 +138,10 @@
 
 .container-color-surface {
   background-color: var(--md-sys-color-surface-container);
+}
+
+.container-color-surface-container-highest {
+  background-color: var(--md-sys-color-surface-container-highest);
 }
 
 .container-color-secondary-container {
