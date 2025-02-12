@@ -70,6 +70,14 @@ function ProjectCard({ icon, title, description, link, isActionVisit = false, is
 
     return (
         <div>
+            <a href={link}>
+                <div className='Project-mobile-card grid-row-2'>
+                    <div className='Project-icon' style={{ width: "20%" }}>
+                        <p>{title}</p>
+                    </div>
+                </div>
+            </a>
+            
             <div className='Project-card'>
                 <div className='Project-icon' style={{ width: "20%" }}>
                     {icon}
@@ -77,7 +85,7 @@ function ProjectCard({ icon, title, description, link, isActionVisit = false, is
                 <div className='Border-left Project-title' style={{ width: "30%" }}>
                     <h1 style={{ margin: "0 16px" }}>{title}</h1>
                 </div>
-                <div className='Border-left' style={{ width: "40%" }} >
+                <div className='Border-left close-at-700px' style={{ width: "40%" }} >
                     <p style={{ margin: "8px 16px" }}>{description}</p>
                 </div>
                 <div className='Border-left' style={{ width: "10%" }} >

@@ -2,8 +2,6 @@ import { useState } from 'react';
 import Header from '../../Header/Header';
 import './BloomBoard.css';
 import ColorChangeScreen from '../../../images/BloomBoard/1000006604.png';
-import { ArrowBack, Circle, CircleOutlined } from '@mui/icons-material';
-import { CSSTransition } from 'react-transition-group';
 
 function BloomBoard() {
     const [headerColor, setHeaderColor] = useState("var(--md-sys-color-secondary-container");
