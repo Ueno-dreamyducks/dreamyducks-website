@@ -28,15 +28,18 @@ function Projects() {
                 <div className='Side-content'>
                     <h1>side content</h1>
                 </div>
-                <div className='text-align-center Main-content'>
-                    <ProjectCard icon={<School sx={{ fontSize: "72px", margin: "16px" }} />} title={"BloomBoard"} description={"Check HAC Grades"} isActionMore={true} height={`400px`} >
-                        <div className='Project-more-container Phone-image-frame'>
+                <div className='text-align-center Main-content grid-row-2'>
+                    <ProjectCard icon={<School sx={{ fontSize: "72px", margin: "16px" }} />} title={"BloomBoard"} description={"Check HAC Grades"} isActionMore={true} height={`400px`} link={'/project/bloomboard'} >
+                        <div className='Display-none-700px-less'>
+                            <div className='Project-more-container Phone-image-frame'>
 
+                            </div>
+                            <div className='padding-16' style={{ textAlign: "right", alignSelf: "flex-end", display: 'flex', gap: "8px", justifyContent: "end" }}>
+                                <a href='/project/bloomboard' className='Project-button container-color-primary'>Explore</a>
+                                <button className='Project-button container-color-tertiary' onClick={() => { }}>Play Store <Launch sx={{ verticalAlign: "middle" }} /></button>
+                            </div>
                         </div>
-                        <div className='padding-16' style={{ textAlign: "right", alignSelf: "flex-end", display: 'flex', gap: "8px", justifyContent: "end" }}>
-                            <a href='/project/bloomboard' className='Project-button container-color-primary'>Explore</a>
-                            <button className='Project-button container-color-tertiary' onClick={() => {}}>Play Store <Launch sx={{ verticalAlign: "middle" }} /></button>
-                        </div>
+
                     </ProjectCard>
                     <ProjectCard icon={<School sx={{ fontSize: "72px", margin: "16px" }} />} title={"BloomBoard"} description={"Check HAC Grades"} isActionMore={true} >
                         <h1>aa</h1>
@@ -69,15 +72,13 @@ function ProjectCard({ icon, title, description, link, isActionVisit = false, is
     }
 
     return (
-        <div>
-            <a href={link}>
-                <div className='Project-mobile-card grid-row-2'>
-                    <div className='Project-icon' style={{ width: "20%" }}>
-                        <p>{title}</p>
-                    </div>
-                </div>
-            </a>
-            
+        <div className='Width-100-percent-700px-less'>
+            <div className='Project-mobile-card '>
+                <div className='Project-icon'>{icon}</div>
+                <h2 className='text-bold'>{title}</h2>
+                <a href={link} className='Project-button container-color-tertiary'>Visit</a>
+            </div>
+
             <div className='Project-card'>
                 <div className='Project-icon' style={{ width: "20%" }}>
                     {icon}
@@ -95,7 +96,7 @@ function ProjectCard({ icon, title, description, link, isActionVisit = false, is
                     </div>
                     <div className={`Project-action ${isActionMore ? "more" : ""}`} onClick={handleOpenButton}>
                         <ExpandMore sx={{ fontSize: "3vw" }} className='Project-action-icon' />
-                        <p className='margin-0' style={{fontSize: "1.75vw"}}>More</p>
+                        <p className='margin-0' style={{ fontSize: "1.75vw" }}>More</p>
                     </div>
                 </div>
             </div>

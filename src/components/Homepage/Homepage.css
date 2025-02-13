@@ -1,7 +1,7 @@
 .Top-banner {
   width: 100%;
   height: 500px;
-  background-color: var(--md-sys-color-tertiary-container);
+  background-image: linear-gradient(to bottom right, var(--md-sys-color-surface-container), var(--md-sys-color-secondary-container),var(--md-sys-color-primary-container), var(--md-sys-color-tertiary));
   display: flex;
   justify-content: center;
   align-items: center;

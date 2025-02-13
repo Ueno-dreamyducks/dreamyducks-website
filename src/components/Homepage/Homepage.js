@@ -52,7 +52,7 @@ export default Homepage
 function TopBannerItem({ containerColor, link, title, subtitle, children }) {
     return (
         <div className={`top-banner-link-container ${containerColor}`} onClick={() => { window.location.href = link; }}>
-            <div style={{ display: "flex", widows: "100%" }} className='padding-horizontal-16'>
+            <div style={{ display: "flex", widows: "100%" }}>
                 {children}
                 <div>
                     <h1 className='banner-title'>{title}</h1>
