@@ -38,6 +38,15 @@
 .Article-paragraph-body {
     display: flex;
     border-radius: 16px;
+    width: 90vw;
+}
+
+.Article-paragraph-body.show {
+    display: flex;
+}
+
+.Article-paragraph-body.hide {
+    display: none;
 }
 
 .Article-table-data {

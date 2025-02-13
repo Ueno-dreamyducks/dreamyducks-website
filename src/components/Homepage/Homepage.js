@@ -34,7 +34,7 @@ function Homepage() {
             </div>
             <div>
                 <header className='stick-header'>
-                    <Header />
+                    <Header onMenuIconClick={() => {if(window.scrollY <= 630) {window.scrollTo({top: 633, behavior: "smooth"})}}} />
                 </header>
                 <div className='Homepage'>
                     <div className='padding-16 container-color-surface'>

@@ -7,7 +7,7 @@ function Projects() {
     const [headerColor, setHeaderColor] = useState("var(--md-sys-color-secondary-container");
 
     const handleScroll = () => {
-        if (window.scrollY > 300) {
+        if (window.scrollY > ((25 * window.screen.height / 100) - 50)) {
             setHeaderColor('var(--md-sys-color-primary)');
         } else {
             setHeaderColor('var(--md-sys-color-secondary-container');
