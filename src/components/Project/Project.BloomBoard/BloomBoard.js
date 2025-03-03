@@ -15,10 +15,6 @@ function BloomBoard() {
     }
     window.addEventListener('scroll', handleScroll);
 
-    const handleFeatureSelectChange = (index) => {
-        console.log(`new index: ${index}`)
-    }
-
     return (
         <div>
             <header className='stick-header'>

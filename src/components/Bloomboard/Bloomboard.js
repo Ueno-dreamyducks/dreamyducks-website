@@ -1,42 +1,87 @@
 import { useState } from 'react';
 import Header from '../Header/Header';
 import './BloomboardApp.css';
+import { useNavigate } from 'react-router-dom';
+
+
 
 function BloomBoard() {
-    return(
+    const [usernamePassword, setUsernamePassword] = useState({ username: "", password: "" })
+
+    const handleUsernameChange = (e) => {
+        setUsernamePassword({
+            ...usernamePassword,
+            username: e.target.value,
+        })
+    }
+    const handlePasswordChange = (e) => {
+        setUsernamePassword({
+            ...usernamePassword,
+            password: e.target.value
+        })
+    }
+
+    const navigate = useNavigate();
+    const handleSubmit = async () => {
+        try {
+            const response = await fetch('http://localhost:8080/bb-hac-api', {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(usernamePassword)
+            });
+
+            if (!response.ok) {
+                throw new Error("HTTP Error", response.status);
+            }
+
+            const jsonData = await response.json();
+
+            console.log('response:', jsonData);
+            navigate('/Bloomboard/Dashboard', { state: jsonData });
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    return (
         <div>
             <header className='stick-header'>
                 <Header />
             </header>
             <div className='Bloomboard-login-container text-align-center'>
-                <div className={`width-50-percent height-100-percent Bloomboard-primary BloomBoard-login-left-container`} style={{height: "calc(100vh - 120px)", borderRadius: "0 32px 32px 0"}}>
-                    <h1 className='text-bold' style={{fontSize: "4vw"}}>BloomBoard</h1>
+                <div className={`width-50-percent height-100-percent Bloomboard-primary BloomBoard-login-left-container`} style={{ height: "calc(100vh - 120px)", borderRadius: "0 32px 32px 0" }}>
+                    <h1 className='text-bold' style={{ fontSize: "4vw" }}>BloomBoard</h1>
                     <h3 className='margin-0'>View Your Grades</h3>
                 </div>
-                <div className={`width-50-percent BloomBoard-login-right-container`} style={{height: "calc(100vh - 120px"}} >
+                <div className={`width-50-percent BloomBoard-login-right-container`} style={{ height: "calc(100vh - 120px" }} >
                     <h2>Log In to ***</h2>
-                    <form className='Bloomboard-login-inputs-container' >
-                        <label for="username" className='text-align-left'>Username</label>
-                        <input id="username" name="username" className='Bloomboard-login-input' />
+                    <form className='Bloomboard-login-inputs-container' method='POST' action={handleSubmit} >
+                        <label htmlFor="username" className='text-align-left'>Username</label>
+                        <input id="username" name="username" onChange={handleUsernameChange} value={usernamePassword.username} className='Bloomboard-login-input' />
                         <br />
-                        <label for="password">Password</label>
-                        <input id="password" name="password" className='Bloomboard-login-input' />
+                        <label htmlFor="password">Password</label>
+                        <input id="password" name="password" type='password' onChange={handlePasswordChange} value={usernamePassword.password} className='Bloomboard-login-input' />
                         <br />
                         <br />
-                        <button type='submit' onClick={{}} className='Bloomboard-login-button Bloomboard-primary text-bold'>Log In</button>
+                        <button type='submit' className='Bloomboard-login-button Bloomboard-primary text-bold cursor-pointer'>Log In</button>
                     </form>
                 </div>
                 {/** Mobile screen */}
-                <div className='Bloomboard-mobile-login-container margin-vertical' style={{height: "calc(100vh - 90px)"}}>
-                    <div className='Bloomboard-primary width-100-percent padding-vertical-16' style={{height: "50vh"}}>
+                <div className='Bloomboard-mobile-login-container margin-vertical' style={{ height: "calc(100vh - 90px)" }}>
+                    <div className='Bloomboard-primary width-100-percent padding-vertical-16' style={{ height: "50vh" }}>
                         <br />
-                        <h1 className='margin-16 text-bold' style={{fontSize: "3rem"}}>BloomBoard</h1>
+                        <h1 className='margin-16 text-bold' style={{ fontSize: "3rem" }}>BloomBoard</h1>
                     </div>
                     <div className='Bloomboard-mobile-body-container'>
-                        <h1>aa</h1>
-                        <div className='Bloomboard-mobile-login-button-container'>
-                        <button onClick={{}} className='Bloomboard-mobile-login-button' >Log In</button>
-                        </div>
+                        <form method="POST" action={handleSubmit}>
+                            <h1>aa</h1>
+                            <div className='Bloomboard-mobile-login-button-container'>
+                                <button type='submit' className='Bloomboard-mobile-login-button' >Log In</button>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
             </div>

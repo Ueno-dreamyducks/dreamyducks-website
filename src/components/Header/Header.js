@@ -3,7 +3,7 @@ import { CalendarMonth, Close, Home, LayersOutlined, MenuOpen } from '@mui/icons
 import { useState } from 'react';
 
 
-function Header({onMenuIconClick = () => {{}}, backgroundColor = "var(--md-sys-color-primary)" }) {
+function Header({onMenuIconClick = () => {}, backgroundColor = "var(--md-sys-color-primary)" }) {
     const [isSideMenuOpen, setIsOpen] = useState(false);
 
     const handleMenuIconClick = () => {

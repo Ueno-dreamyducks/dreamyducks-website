@@ -8,6 +8,7 @@ import Project from './components/Project/Project';
 import BloomBoard from './components/Project/Project.BloomBoard/BloomBoard';
 import BloomBoardApp from './components/Bloomboard/Bloomboard';
 import NoPageFound from './components/NoPageFound/NoPageFound';
+import BBDashboard from './components/BloomboardDashboard/BBDashboard';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path='/project' element={<Project />} />
           <Route path='/project/bloomboard' element={<BloomBoard />} />
           <Route path='/bloomboard' element={<BloomBoardApp />} />
+          <Route path='/Bloomboard/Dashboard' element={<BBDashboard />} />
           <Route path="*" element={<NoPageFound />} />
         </Routes>
       </BrowserRouter>
