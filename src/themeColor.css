@@ -48,4 +48,6 @@
   --md-sys-color-surface-container: rgb(234 239 233);
   --md-sys-color-surface-container-high: rgb(228 234 228);
   --md-sys-color-surface-container-highest: rgb(222 228 222);
+
+  --bloomboard-primary: #1B6CB0;
 }

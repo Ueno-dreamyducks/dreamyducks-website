@@ -1,0 +1,96 @@
+.Bloomboard-login-container {
+    min-height: calc(100vh - 90px);
+    background-color: var(--md-sys-color-surface);
+    display: flex;
+    align-items: center;
+}
+
+.Bloomboard-primary {
+    background-color: var(--bloomboard-primary);
+    color: aliceblue;
+}
+
+.BloomBoard-login-left-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    @media (max-width: 959px) {
+        display: none;
+    }
+}
+
+.BloomBoard-login-right-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    @media (max-width: 959px) {
+        display: none;
+    }
+}
+
+.Bloomboard-login-input {
+    font-size: 1rem;
+    border-radius: 32px;
+    border: solid gray 2px;
+    width: 40%;
+    padding: 8px 16px;
+}
+
+.Bloomboard-login-button {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.3rem;
+}
+.Bloomboard-login-inputs-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.Bloomboard-mobile-login-container {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+
+    @media (min-width: 960px) {
+        display: none;
+    }
+}
+
+.Bloomboard-mobile-body-container {
+    position: absolute;
+    top: 20vh;
+    width: 100%;
+    height: 70vh;
+    background-color: var(--md-sys-color-surface-container);
+    border-radius: 70px 70px 0 0;
+}
+
+.Bloomboard-mobile-login-button-container {
+    position: absolute;
+    display: block;
+    text-align: center;
+    bottom: 32px;
+    width: 100vw;
+}
+
+.Bloomboard-mobile-login-button {
+    width: 90%;
+    padding: 12px 0;
+    font-size: 1.5rem;
+    border: none;
+    background-color: var(--bloomboard-primary);
+    border-radius: 50px;
+    color: aliceblue;
+    font-weight: bold;
+}
