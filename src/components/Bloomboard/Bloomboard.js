@@ -76,7 +76,19 @@ function BloomBoard() {
                     </div>
                     <div className='Bloomboard-mobile-body-container'>
                         <form method="POST" action={handleSubmit}>
-                            <h1>aa</h1>
+                            <h1>Log In</h1>
+                            <select name='district' id="district" className='Bloomboard-select'>
+                                <option value="Deonton ISD">Denton ISD</option>
+                                <option value="Frisco ISD">Frisco ISD</option>
+                            </select>
+                            <br />
+                            <label htmlFor="username" className='text-align-left'>Username</label>
+                            <br />
+                            <input id="username" name="username" onChange={handleUsernameChange} value={usernamePassword.username} className='Bloomboard-login-input' />
+                            <br />
+                            <label htmlFor="password">Password</label>
+                            <br />
+                            <input id="password" name="password" type='password' onChange={handlePasswordChange} value={usernamePassword.password} className='Bloomboard-login-input' />
                             <div className='Bloomboard-mobile-login-button-container'>
                                 <button type='submit' className='Bloomboard-mobile-login-button' >Log In</button>
                             </div>
