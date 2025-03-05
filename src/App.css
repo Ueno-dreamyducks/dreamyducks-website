@@ -68,6 +68,10 @@
   margin: 16px
 }
 
+.margin-horizontal-16 {
+  margin: 0 16px;
+}
+
 .Article-paragraph {
   text-indent: 25px;
 }
@@ -118,6 +122,14 @@
 
 .display-flex {
   display: flex;
+}
+
+.text-line-max-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+          line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
   /** Flex alignment **/
   .display-flex-center {

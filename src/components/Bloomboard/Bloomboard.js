@@ -91,7 +91,7 @@ function BloomBoard() {
                             <br />
                             <input id="password" name="password" type='password' onChange={handlePasswordChange} value={usernamePassword.password} className='Bloomboard-login-input' />
                             <div className='Bloomboard-mobile-login-button-container'>
-                                <button type='submit' className='Bloomboard-mobile-login-button' >Log In</button>
+                                <button type='submit' className='Bloomboard-mobile-login-button cursor-pointer' >Log In</button>
                             </div>
                         </form>
                     </div>
