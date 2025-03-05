@@ -24,7 +24,7 @@ function BloomBoard() {
     const navigate = useNavigate();
     const handleSubmit = async () => {
         try {
-            const response = await fetch('http://localhost:8080/bb-hac-api', {
+            const response = await fetch('https://dreamyducks-hac-api.uc.r.appspot.com/bb-hac-api', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -82,6 +82,7 @@ function BloomBoard() {
                                 <option value="Frisco ISD">Frisco ISD</option>
                             </select>
                             <br />
+                            <br />
                             <label htmlFor="username" className='text-align-left'>Username</label>
                             <br />
                             <input id="username" name="username" onChange={handleUsernameChange} value={usernamePassword.username} className='Bloomboard-login-input' />
@@ -93,7 +94,6 @@ function BloomBoard() {
                                 <button type='submit' className='Bloomboard-mobile-login-button' >Log In</button>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>
