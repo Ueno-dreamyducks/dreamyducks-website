@@ -29,6 +29,14 @@
     align-items: center;
 }
 
+.ClassCard-avg {
+    display: flex;
+    justify-content: center;
+    background-color: darkcyan;
+    padding: 6px 0;
+    border-radius: 16px;
+}
+
 h1 {
     margin: 0;
     padding: 0 8px;

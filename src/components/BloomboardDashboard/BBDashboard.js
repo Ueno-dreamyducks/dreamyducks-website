@@ -51,23 +51,27 @@ function ClassCard({ClassData}) {
 
     for(var i = 0;i<2;i++) {
         items.push(ClassData.assignments[i]);
+        console.log(ClassData.assignments[i])
     }
     return(
         <div className='ClassCard-container'>
             <div className='ClassCard-header'>
                 <h1 className='text-line-max-1 text-bold' style={{width:"80%", fontSize:"1.25rem"}}>{ClassData.className.trim().split(" - ")[1].replace(/\d+/g, '')}</h1>
-                <div className='' style={{width:"20%"}}>
-                    <h1 className='text-bold' style={{fontSize: "1rem"}}>{classScore === 100 ? "100":classScore.toFixed(2)}</h1>
+                <div className='ClassCard-avg' style={{width:"20%"}}>
+                    <h1 className='text-bold' style={{fontSize: "1.25rem"}}>{classScore === 100 ? "100":classScore.toFixed(2)}</h1>
                 </div>
             </div>
             <div className=''>
             {items.map((assignment,index) => (
                 <div key={index}>
                     <div className='ClassCard-assignment-row'>
-                        <p style={{margin: "8px 16px"}}>{assignment.Assignment.slice(0,-1)}</p>
+                        <p style={{width: "85%", margin: "8px 16px"}}>{assignment.Assignment.slice(0,-1)}</p>
+                        <p style={{width: "15%", textAlign: "right", margin: "8px 16px"}}>{Number(assignment.Score).toFixed(0)}/{Number(assignment.TotalScore).toFixed(0)}</p>
                     </div>
                 </div>
             ))}
+            <hr />
+            <a href="/Bloomboard/Dashboard" style={{color: "var(--md-sys-color-secondary)"}} className='text-decoration-none text-align-center'>View All</a>
             </div>
         </div>
     )
