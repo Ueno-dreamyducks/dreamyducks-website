@@ -6,9 +6,10 @@ import Calendar, { CalendarWidget } from './components/Calendar/Calendar';
 import Projects from './components/Projects/Projects';
 import Project from './components/Project/Project';
 import BloomBoard from './components/Project/Project.BloomBoard/BloomBoard';
-import BloomBoardApp from './components/Bloomboard/Bloomboard';
+import BloomBoardApp from './components/BloomboardApp/Bloomboard/Bloomboard';
 import NoPageFound from './components/NoPageFound/NoPageFound';
-import BBDashboard from './components/BloomboardDashboard/BBDashboard';
+import BBDashboard from './components/BloomboardApp/BloomboardDashboard/BBDashboard';
+import BBDetail from './components/BloomboardApp/BloomboardDetail/BloomboardDetail';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path='/project/bloomboard' element={<BloomBoard />} />
           <Route path='/bloomboard' element={<BloomBoardApp />} />
           <Route path='/Bloomboard/Dashboard' element={<BBDashboard />} />
+          <Route path='/Bloomboard/Dashboard/:key' element={<BBDetail />} />
           <Route path="*" element={<NoPageFound />} />
         </Routes>
       </BrowserRouter>

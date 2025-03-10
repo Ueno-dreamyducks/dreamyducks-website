@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import Header from '../Header/Header';
+import Header from '../../Header/Header';
 import './BloomboardApp.css';
 import { useNavigate } from 'react-router-dom';
 
 
 
 function BloomBoard() {
-    const [usernamePassword, setUsernamePassword] = useState({ username: "", password: "" })
+    const [usernamePassword, setUsernamePassword] = useState({ username: "", password: "" });
+    const [isLogging, setIsLogging] = useState(false);
 
     const handleUsernameChange = (e) => {
         setUsernamePassword({
@@ -45,6 +46,12 @@ function BloomBoard() {
         }
     }
 
+    const handleSubmitClick = () => {
+        console.log('handle submit function');
+        setIsLogging(true);
+        handleSubmit();
+    }
+
     return (
         <div>
             <header className='stick-header'>
@@ -65,7 +72,8 @@ function BloomBoard() {
                         <input id="password" name="password" type='password' onChange={handlePasswordChange} value={usernamePassword.password} className='Bloomboard-login-input' />
                         <br />
                         <br />
-                        <button type='submit' className='Bloomboard-login-button Bloomboard-primary text-bold cursor-pointer'>Log In</button>
+                        <button type='submit' onClick={handleSubmitClick} disabled={isLogging} className='Bloomboard-login-button Bloomboard-primary text-bold cursor-pointer'>Log In</button>
+                        <progress max="100"></progress>
                     </form>
                 </div>
                 {/** Mobile screen */}
@@ -91,7 +99,7 @@ function BloomBoard() {
                             <br />
                             <input id="password" name="password" type='password' onChange={handlePasswordChange} value={usernamePassword.password} className='Bloomboard-login-input' />
                             <div className='Bloomboard-mobile-login-button-container'>
-                                <button type='submit' className='Bloomboard-mobile-login-button cursor-pointer' >Log In</button>
+                                <button type='submit' disabled={isLogging} className='Bloomboard-mobile-login-button cursor-pointer' >Log In</button>
                             </div>
                         </form>
                     </div>

@@ -1,13 +1,20 @@
 import { useEffect } from 'react';
 import './BBDashboard.css';
 import { useLocation } from 'react-router-dom';
-import Header from '../Header/Header';
+import Header from '../../Header/Header';
 
 function BBDashboard() {
     const location = useLocation();
     const data = location.state;
 
-    const classNames = data.map(data => data.className.trim());
+    useEffect(() => {
+        for(const classData of data) {
+            const key = classData.className.trim();
+
+            sessionStorage.setItem(key, JSON.stringify(classData));            
+            console.log(classData);
+        }
+    }, [data]);
 
     return(
         <div>
@@ -51,7 +58,6 @@ function ClassCard({ClassData}) {
 
     for(var i = 0;i<2;i++) {
         items.push(ClassData.assignments[i]);
-        console.log(ClassData.assignments[i])
     }
     return(
         <div className='ClassCard-container'>
@@ -71,7 +77,7 @@ function ClassCard({ClassData}) {
                 </div>
             ))}
             <hr />
-            <a href="/Bloomboard/Dashboard" style={{color: "var(--md-sys-color-secondary)"}} className='text-decoration-none text-align-center'>View All</a>
+            <a href={`/Bloomboard/Dashboard/${ClassData.className.trim()}`} style={{color: "var(--md-sys-color-secondary)"}} className='text-decoration-none text-align-center ClassCard-viewAll'>View All</a>
             </div>
         </div>
     )
