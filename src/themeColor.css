@@ -50,4 +50,10 @@
   --md-sys-color-surface-container-highest: rgb(222 228 222);
 
   --bloomboard-primary: #1B6CB0;
+  --bloomboard-on-primary: rgb(255 255 255);
+  --bloomboard-primary-container: rgb(209 228 255);
+  --bloomboard-secondary: rgb(83 95 112);
+  --bloomboard-on-secondary: rgb(255 255 255);
+  --bloomboard-secondary-container: rgb(215 227 248);
+  --bloomboard-tertiary: rgb(107 87 120);
 }

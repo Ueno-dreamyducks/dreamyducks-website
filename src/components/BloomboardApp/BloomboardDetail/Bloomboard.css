@@ -5,8 +5,25 @@
     align-items: center;
 }
 
+.BBDetail-body {
+    background-color: var(--md-sys-color-surface-container);
+    margin: 8px 16px;
+    border-radius: 20px;
+}
+
+.BBDetail-body-header {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--bloomboard-primary);
+    color: var(--bloomboard-on-primary);
+    border-radius: 20px;
+    padding: 0 20px;
+}   
+
 .BB-row {
     display: flex;
+    flex-direction: column;
+    margin: 4px 20px;
 }
 
 .BB-row-content {
@@ -14,10 +31,19 @@
     display: flex;
     width: 100%;
     flex-direction: row;
+    align-items: center;
+    font-size: large;
 }
 
 .BBDetail-row-score {
     display: flex;
+    flex-direction: column;
+    justify-content: right;
+}
+
+.flex-justify-right {
+    display: flex;
+    width: 100%;
     justify-content: right;
 }
 
