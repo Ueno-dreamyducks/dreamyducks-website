@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import './Bloomboard.css';
-import { ArrowBack } from "@mui/icons-material";
+import { ArrowBack, Calculate } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 
 function BloomboardDetail() {
@@ -71,7 +71,7 @@ function BloomboardDetail() {
     }
 
     const handleAddPredict = (e) => {
-        const newAssignment = { Due: "", Assigned: "", Assignment: "Predict", Category: e.category, Score: e.point, TotalScore: e.maxPoint, AvgScore: "---" }
+        const newAssignment = { Due: "", Assigned: "", Assignment: "Predict*", Category: e.category, Score: e.point, TotalScore: e.maxPoint, AvgScore: "---" }
 
         console.log(e);
 
@@ -134,7 +134,7 @@ function BloomboardDetail() {
         <div className="BBDetail-container">
             <dialog id="calc_dialog"><BBCalcDialog closeDialog={handleCloseDialog} categories={categories} onAddPredict={(e) => handleAddPredict(e)} /></dialog>
             <div className="BBDetail-top">
-                <div style={{ display: "flex" }}>
+                <div style={{ display: "flex", width:"100%" }}>
                     <ArrowBack sx={{ fontSize: "48px", padding: "0 12px", width: "5%", cursor: "pointer" }} />
                     <h1 className="text-bold text-align-center" style={{ width: "95%" }}>{data.className}</h1>
                 </div>
@@ -152,7 +152,7 @@ function BloomboardDetail() {
                         <h2>{classScore}</h2>
                     </div>
                     <div className="BBDetail-score-spot category">
-                        <h3>Performance</h3>
+                        <h3>Summative</h3>
                         <h2>
                             {categoriesPoints && categoriesPoints.length > 0
                                 ? (categoriesPoints[1]?.points / categoriesPoints[1]?.maxPoints * 100).toFixed(2)
@@ -163,11 +163,14 @@ function BloomboardDetail() {
             </div>
             <div className="BBDetail-body">
                 <div className="BBDetail-body-header">
-                    <h3 className="text-bold" style={{ width: "80%" }}>Assignment</h3>
+                    <h3 className="text-bold" style={{ width: "40%" }}>Assignment</h3> 
+                    <h3 className="text-bold" style={{ width: "20%"}}>Due Date</h3>
+                    <h3 className="text-bold" style={{ width: "20%"}}>Category</h3>
                     <h3 className="text-bold" style={{ width: "20%", display: "flex", justifyContent: "right" }}>Score</h3>
                 </div>
                 <div className="BBDetail-body-calc cursor-pointer" onClick={handlePredictClick}>
-                    <h1>Predict Your Grade</h1>
+                    <Calculate sx={{fontSize:"36px"}} />
+                    <h3 className="text-bold">Predict Your Grade</h3>
                 </div>
                 {assignments.map((assignment, index) => (
                     <BBDetail key={index} row={assignment} />
@@ -187,8 +190,9 @@ function BBDetail({ row }) {
     return (
         <div className="BB-row">
             <div className="BB-row-content">
-                <p style={{ width: "60%" }} >{row.Assignment.slice(0, -1)}</p>
+                <p style={{ width: "40%" }} >{row.Assignment.slice(0, -1)}</p>
                 <p style={{ width: "20%" }} >{row.Due}</p>
+                <p style={{ width: "20%" }} >{row.Category}</p>
                 <div style={{ width: "20%" }} className="BBDetail-row-score">
                     <p className="flex-justify-right">{row.Score ? row.Score : "---"}</p>
                     <p className="flex-justify-right margin-0" style={{ color: "var(--md-sys-color-tertiary)", fontSize: "medium" }}>Avg. {row.AvgScore}</p>
@@ -199,7 +203,7 @@ function BBDetail({ row }) {
 }
 
 function BBCalcDialog({ closeDialog, categories, onAddPredict }) {
-    const [element, setElement] = useState({ category: categories && categories.length > 0 ? categories[0] : "N/A", point: 0, maxPoint: 0 })
+    const [element, setElement] = useState({ category: categories && categories.length > 0 ? categories[0] : "N/A"});
     let categoriesOptions = ["Select category"];
 
     if (Array.isArray(categories)) {
@@ -233,17 +237,20 @@ function BBCalcDialog({ closeDialog, categories, onAddPredict }) {
         <div className="BBCalcDialog">
             <div className="BBCalcDialog-header">
                 <ArrowBack sx={{ fontSize: "32px", color: "white", backgroundColor: "#525252", padding: "8px", borderRadius: "50px", cursor: "pointer" }} onClick={closeDialog} />
-                <h2>Calc (short for calculator)</h2>
+                <h2>Predict Calculator</h2>
             </div>
-            <form action={handleSubmit}>
-                <select name='category' onChange={handleCategoryChange} value={element.category}>
+            <form className="text-align-center" action={handleSubmit}>
+                <select name='category' className="BBDetail-dialog-select" onChange={handleCategoryChange} value={element.category}>
                     {categoriesOptions?.map((category, index) => (
                         <option key={index} value={category}>{category}</option>
                     ))}
                 </select>
-                <input className="display-block" name="point" required onChange={handlePointChange} value={element.point} />
-                <input className="display-block" name="maxPoint" required onChange={handleMaxPointChange} value={element.maxPoint} />
-                <button className="display-block" type="submit">Submit</button>
+                <hr />
+                <input className=" BBDetail-dialog-input" placeholder="Predict point" name="point" required onChange={handlePointChange} value={element.point} />
+                <br />
+                <input className=" BBDetail-dialog-input" placeholder="Max possible point" name="maxPoint" required onChange={handleMaxPointChange} value={element.maxPoint} />
+                <br />
+                <button className="BBDetail-dialog-submit text-bold" type="submit">Predict</button>
             </form>
         </div>
     )

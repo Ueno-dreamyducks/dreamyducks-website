@@ -46,10 +46,12 @@
     background-color: var(--bloomboard-secondary-container);
     margin: 8px 12px;
     border-radius: 16px;
-    padding: 8px 4px;
+    padding: 8px 12px;
     display: flex;
     width: 95%;
     justify-self: center;
+    align-items: center;
+    gap: 12px;
 }
 
 .BB-row {
@@ -104,6 +106,32 @@ dialog {
     left: 50%;
     padding: 0;
     background-color: transparent;
+}
+
+.BBDetail-dialog-select {
+    width: 50%;
+    font-size: 0.8rem;
+    border-radius: 12px;
+    padding: 8px 12px;
+}
+
+.BBDetail-dialog-input {
+    font-size: 1rem;
+    border-radius: 32px;
+    border: solid gray 2px;
+    padding: 8px 16px;
+    margin: 8px 0;
+}
+
+.BBDetail-dialog-submit {
+    font-size: 1rem;
+    border-radius: 16px;
+    padding: 8px;
+    border: none;
+    background-color: var(--bloomboard-primary);
+    color: var(--bloomboard-on-primary);
+    margin: 12px 0;
+    width: 40%;
 }
 
 p {
