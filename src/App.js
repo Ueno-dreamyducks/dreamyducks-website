@@ -10,6 +10,7 @@ import BloomBoardApp from './components/BloomboardApp/Bloomboard/Bloomboard';
 import NoPageFound from './components/NoPageFound/NoPageFound';
 import BBDashboard from './components/BloomboardApp/BloomboardDashboard/BBDashboard';
 import BBDetail from './components/BloomboardApp/BloomboardDetail/BloomboardDetail';
+import { ClassList } from './components/BloomboardApp/BloomboardDashboard/BBDashboard';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path='/project/bloomboard' element={<BloomBoard />} />
           <Route path='/bloomboard' element={<BloomBoardApp />} />
           <Route path='/Bloomboard/Dashboard' element={<BBDashboard />} />
+          <Route path='/Bloomboard/ClassList' element={<ClassList />} />
           <Route path='/Bloomboard/Dashboard/:key' element={<BBDetail />} />
           <Route path="*" element={<NoPageFound />} />
         </Routes>

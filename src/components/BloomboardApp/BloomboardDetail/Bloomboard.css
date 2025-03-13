@@ -55,18 +55,20 @@
 }
 
 .BB-row {
-    display: flex;
-    flex-direction: column;
     margin: 4px 20px;
 }
 
 .BB-row-content {
     padding: 8px 4px;
-    display: flex;
     width: 100%;
-    flex-direction: row;
-    align-items: center;
     font-size: large;
+    display: grid;
+    grid-template-columns: 40% 20% 20% 20%;
+}
+
+.BB-row-content.Prediction-cell {
+    grid-template-columns: 33% 20% 20% 20% 7%;
+    visibility: visible;
 }
 
 .BBDetail-row-score {

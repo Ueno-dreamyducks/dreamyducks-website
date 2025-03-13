@@ -71,7 +71,7 @@ function BloomboardDetail() {
     }
 
     const handleAddPredict = (e) => {
-        const newAssignment = { Due: "", Assigned: "", Assignment: "Predict*", Category: e.category, Score: e.point, TotalScore: e.maxPoint, AvgScore: "---" }
+        const newAssignment = { Due: "", Assigned: "", Assignment: "Predict*", Category: e.category, Score: e.point, TotalScore: e.maxPoint, AvgScore: "---", isPrediction: true }
 
         console.log(e);
 
@@ -135,7 +135,7 @@ function BloomboardDetail() {
             <dialog id="calc_dialog"><BBCalcDialog closeDialog={handleCloseDialog} categories={categories} onAddPredict={(e) => handleAddPredict(e)} /></dialog>
             <div className="BBDetail-top">
                 <div style={{ display: "flex", width: "100%" }}>
-                    <ArrowBack sx={{ fontSize: "48px", padding: "0 12px", width: "5%", cursor: "pointer" }} />
+                    <ArrowBack onClick={() => {window.location.href='/Bloomboard/classlist'}} sx={{ fontSize: "48px", padding: "0 12px", width: "5%", cursor: "pointer" }} />
                     <h1 className="text-bold text-align-center" style={{ width: "95%" }}>{data.className}</h1>
                 </div>
                 <div className="BBDetail-score-board">
@@ -189,14 +189,15 @@ function BBDetail({ row }) {
 
     return (
         <div className="BB-row">
-            <div className="BB-row-content">
-                <p style={{ width: "40%" }} >{row.Assignment.slice(0, -1)}</p>
-                <p style={{ width: "20%" }} >{row.Due}</p>
-                <p style={{ width: "20%" }} >{row.Category}</p>
-                <div style={{ width: "20%" }} className="BBDetail-row-score">
+            <div className={`BB-row-content ${row.isPrediction ? 'Prediction-cell': ""}`}>
+                <p>{row.Assignment.slice(0, -1)}</p>
+                <p>{row.Due}</p>
+                <p>{row.Category}</p>
+                <div className="BBDetail-row-score">
                     <p className="flex-justify-right">{row.Score ? row.Score : "---"}</p>
                     <p className="flex-justify-right margin-0" style={{ color: "var(--md-sys-color-tertiary)", fontSize: "medium" }}>Avg. {row.AvgScore}</p>
                 </div>
+                <Close sx={{placeSelf:"center",visibility:'hidden'}} />
             </div>
         </div>
     )

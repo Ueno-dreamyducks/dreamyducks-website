@@ -15,6 +15,30 @@
     border-radius: 12px 12px 0 0;
 }
 
+.BBDashboard {
+    overflow: hidden;
+}
+
+.BBDashboard-body {
+    display: grid;
+    height: calc(100vh);
+    grid-template-columns: 30% 70%;
+}
+
+.BBDashboard-body>menu {
+    background-color: var(--md-sys-color-surface);
+    margin: 0;
+    padding: 0 20px;
+    overflow: scroll;
+    max-height: 100vh;
+}
+
+.BBDashboard-body>iframe {
+    width: 100%;
+    height: 100vh;
+    overflow: scroll;
+}
+
 .ClassCard-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -44,4 +68,26 @@
 h1 {
     margin: 0;
     padding: 0 8px;
+}
+
+.MenuClassCard-btn {
+    display: block;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+}
+
+.MenuClassCard {
+    margin: 8px;
+    padding: 4px 12px;
+    background-color: var(--md-sys-color-surface-container-lowest);
+    border-radius: 16px;
+}
+
+.MenuClassCard.selected {
+    background-color: var(--bloomboard-primary);
+}
+
+.MenuClassCard:hover {
+    box-shadow: var(--box-shadow-1);
 }

@@ -40,6 +40,7 @@ function BloomBoard() {
             const jsonData = await response.json();
 
             console.log('response:', jsonData);
+            sessionStorage.setItem('classList', JSON.stringify(jsonData));
             navigate('/Bloomboard/Dashboard', { state: jsonData });
         } catch (err) {
             console.error(err);
