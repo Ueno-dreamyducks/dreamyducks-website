@@ -40,7 +40,7 @@
     color: var(--bloomboard-on-primary);
     border-radius: 20px;
     padding: 0 20px;
-}   
+}
 
 .BBDetail-body-calc {
     background-color: var(--bloomboard-secondary-container);
@@ -85,7 +85,8 @@
     border: none;
     outline: none !important;
     width: 60vw;
-    background-color: var(--md-sys-color-surface-container-highest);
+    max-width: 770px;
+    background-color: var(--md-sys-color-surface-container-low);
     border-radius: 16px;
     padding: 16px 24px;
 }
@@ -108,12 +109,106 @@ dialog {
     background-color: transparent;
 }
 
-.BBDetail-dialog-select {
-    width: 50%;
-    font-size: 0.8rem;
-    border-radius: 12px;
-    padding: 8px 12px;
+dialog[open]::backdrop {
+    animation: blur-in 1s forwards;
 }
+
+html:has(dialog[open]) {
+    overflow: hidden;
+}
+
+.BBCalcDialog>form {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    align-items: start;
+    font-size: large;
+}
+
+.BBCalcDialog>form>header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.BBCalcDialog>form>header>h2 {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 12px;
+}
+
+.BBCalcDialog>form>header>button {
+    border-radius: 50%;
+    width: 5vw;
+    height: 5vw;
+    padding: 2px;
+    aspect-ratio: 1;
+    flex-shrink: 0;
+    place-items: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.BBCalcDialog>form>div>div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+}
+
+.BBCalcDialog>form>div>div>select {
+    padding: 4px 12px;
+    font-size: large;
+    width: 100%;
+}
+
+.BBCalcDialog>form>div>div>h4 {
+    width: 30%;
+}
+
+.BBCalcDialog>form>div>div>input {
+    padding: 4px 12px;
+    font-size: large;
+    width: 100%;
+}
+
+.BBCalcDialog>form>footer {
+    margin: 12px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.BBCalcDialog>form>footer>button{
+    padding: 4px 12px;
+    font-size: large;
+    background-color: var(--md-sys-color-surface-container-lowest);
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    box-shadow: var(--box-shadow-1);
+    cursor: pointer;
+}
+
+.BBCalcDialog>form>footer>button:nth-child(1) {
+    color: var(--md-sys-color-error);
+}
+
+.BBCalcDialog>form>footer>button:nth-child(2) {
+    color: var(--bloomboard-primary);
+}
+
+@keyframes blur-in {
+    from {
+        backdrop-filter: blur(0px);
+    }
+
+    to {
+        backdrop-filter: blur(4px);
+    }
+}
+
 
 .BBDetail-dialog-input {
     font-size: 1rem;
@@ -121,17 +216,6 @@ dialog {
     border: solid gray 2px;
     padding: 8px 16px;
     margin: 8px 0;
-}
-
-.BBDetail-dialog-submit {
-    font-size: 1rem;
-    border-radius: 16px;
-    padding: 8px;
-    border: none;
-    background-color: var(--bloomboard-primary);
-    color: var(--bloomboard-on-primary);
-    margin: 12px 0;
-    width: 40%;
 }
 
 p {

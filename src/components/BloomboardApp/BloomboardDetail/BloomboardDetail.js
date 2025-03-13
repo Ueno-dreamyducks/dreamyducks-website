@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import './Bloomboard.css';
-import { ArrowBack, Calculate } from "@mui/icons-material";
+import { ArrowBack, Calculate, Close } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 
 function BloomboardDetail() {
@@ -110,7 +110,7 @@ function BloomboardDetail() {
             }
             console.log("categoryweight total", categoryWeightTotal)
 
-            for (/* const category of categoriesPoints */ var i=0;i<nextCategories.length;i++) {
+            for (/* const category of categoriesPoints */ var i = 0; i < nextCategories.length; i++) {
                 const category = nextCategories[i]
                 const points = Number(category.points)
                 const max = Number(category.maxPoints)
@@ -134,7 +134,7 @@ function BloomboardDetail() {
         <div className="BBDetail-container">
             <dialog id="calc_dialog"><BBCalcDialog closeDialog={handleCloseDialog} categories={categories} onAddPredict={(e) => handleAddPredict(e)} /></dialog>
             <div className="BBDetail-top">
-                <div style={{ display: "flex", width:"100%" }}>
+                <div style={{ display: "flex", width: "100%" }}>
                     <ArrowBack sx={{ fontSize: "48px", padding: "0 12px", width: "5%", cursor: "pointer" }} />
                     <h1 className="text-bold text-align-center" style={{ width: "95%" }}>{data.className}</h1>
                 </div>
@@ -163,13 +163,13 @@ function BloomboardDetail() {
             </div>
             <div className="BBDetail-body">
                 <div className="BBDetail-body-header">
-                    <h3 className="text-bold" style={{ width: "40%" }}>Assignment</h3> 
-                    <h3 className="text-bold" style={{ width: "20%"}}>Due Date</h3>
-                    <h3 className="text-bold" style={{ width: "20%"}}>Category</h3>
+                    <h3 className="text-bold" style={{ width: "40%" }}>Assignment</h3>
+                    <h3 className="text-bold" style={{ width: "20%" }}>Due Date</h3>
+                    <h3 className="text-bold" style={{ width: "20%" }}>Category</h3>
                     <h3 className="text-bold" style={{ width: "20%", display: "flex", justifyContent: "right" }}>Score</h3>
                 </div>
                 <div className="BBDetail-body-calc cursor-pointer" onClick={handlePredictClick}>
-                    <Calculate sx={{fontSize:"36px"}} />
+                    <Calculate sx={{ fontSize: "36px" }} />
                     <h3 className="text-bold">Predict Your Grade</h3>
                 </div>
                 {assignments.map((assignment, index) => (
@@ -203,7 +203,7 @@ function BBDetail({ row }) {
 }
 
 function BBCalcDialog({ closeDialog, categories, onAddPredict }) {
-    const [element, setElement] = useState({ category: categories && categories.length > 0 ? categories[0] : "N/A"});
+    const [element, setElement] = useState({ category: categories && categories.length > 0 ? categories[0] : "N/A" });
     let categoriesOptions = ["Select category"];
 
     if (Array.isArray(categories)) {
@@ -232,25 +232,37 @@ function BBCalcDialog({ closeDialog, categories, onAddPredict }) {
 
     const handleSubmit = () => {
         onAddPredict(element);
+        closeDialog();
     }
     return (
         <div className="BBCalcDialog">
-            <div className="BBCalcDialog-header">
-                <ArrowBack sx={{ fontSize: "32px", color: "white", backgroundColor: "#525252", padding: "8px", borderRadius: "50px", cursor: "pointer" }} onClick={closeDialog} />
-                <h2>Predict Calculator</h2>
-            </div>
-            <form className="text-align-center" action={handleSubmit}>
-                <select name='category' className="BBDetail-dialog-select" onChange={handleCategoryChange} value={element.category}>
-                    {categoriesOptions?.map((category, index) => (
-                        <option key={index} value={category}>{category}</option>
-                    ))}
-                </select>
-                <hr />
-                <input className=" BBDetail-dialog-input" placeholder="Predict point" name="point" required onChange={handlePointChange} value={element.point} />
-                <br />
-                <input className=" BBDetail-dialog-input" placeholder="Max possible point" name="maxPoint" required onChange={handleMaxPointChange} value={element.maxPoint} />
-                <br />
-                <button className="BBDetail-dialog-submit text-bold" type="submit">Predict</button>
+            <form action={handleSubmit} autoComplete="off">
+                <header>
+                    <h2><Calculate sx={{fontSize: "2rem"}} />Predict Calculator</h2>
+                    <button onClick={closeDialog}><Close sx={{fontSize:"3vw"}} /></button>
+                </header>
+                <div>
+                    <div>
+                        <h4>Category</h4>
+                        <select name='category' className="" onChange={handleCategoryChange} value={element.category}>
+                            {categoriesOptions?.map((category, index) => (
+                                <option key={index} value={category}>{category}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <div>
+                        <h4>Exceptation point</h4>
+                        <input className="" placeholder="Predict point" name="point" required onChange={handlePointChange} value={element.point} />
+                    </div>
+                    <div>
+                        <h4>Max possible point</h4>
+                        <input className="" autoComplete="off" placeholder="Max possible point" name="maxPoint" required onChange={handleMaxPointChange} value={element.maxPoint} />
+                    </div>
+                </div>
+                <footer>
+                    <button onClick={closeDialog}>Cancel</button>
+                    <button type="submit">Add Predict</button>
+                </footer>
             </form>
         </div>
     )
