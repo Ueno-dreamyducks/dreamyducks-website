@@ -50,7 +50,7 @@ function BloomboardDetail() {
         }
 
         setScore(Number(newClassScore).toFixed(2));
-    }, [])
+    }, []);
 
     const handlePredictClick = () => {
         try {
@@ -130,29 +130,105 @@ function BloomboardDetail() {
             console.log(false)
         }
     }
+
+    useEffect(() => {
+        const cat1Grade = categoriesPoints && categoriesPoints.length > 0
+            ? (categoriesPoints[0]?.points / categoriesPoints[0]?.maxPoints * 2.25).toFixed(2)
+            : 0;
+
+        const cat2Grade = categoriesPoints && categoriesPoints.length > 0
+            ? (categoriesPoints[1]?.points / categoriesPoints[1]?.maxPoints * 2.25).toFixed(2)
+            : 0;
+
+        const cat1Canvas = document.getElementById("category-1-canvas");
+        const cat1Ctx = cat1Canvas.getContext("2d");
+
+        cat1Ctx.clearRect(0, 0, cat1Canvas.width, cat1Canvas.height);
+
+        cat1Ctx.beginPath();
+        cat1Ctx.lineWidth = 15;
+        cat1Ctx.lineCap = 'round';
+        cat1Ctx.strokeStyle = '#BDBDBD';
+        cat1Ctx.arc(150, 75, 50, 40, 2.25 * Math.PI);
+        cat1Ctx.stroke();
+
+        cat1Ctx.beginPath();
+        cat1Ctx.lineWidth = 15;
+        cat1Ctx.lineCap = 'round';
+        cat1Ctx.strokeStyle = '#1B6CB0';
+        cat1Ctx.arc(150, 75, 50, 40, cat1Grade * Math.PI);
+        cat1Ctx.stroke();
+
+        cat1Ctx.closePath();
+
+        const summaryCanvas = document.getElementById("summaryCanvas");
+        const summaryCtx = summaryCanvas.getContext("2d");
+
+        summaryCtx.clearRect(0, 0, summaryCanvas.width, summaryCanvas.height);
+
+        summaryCtx.beginPath();
+        summaryCtx.lineWidth = 20;
+        summaryCtx.lineCap = 'round';
+        summaryCtx.strokeStyle = '#BDBDBD';
+        summaryCtx.arc(150, 75, 60, 40, 2.25 * Math.PI);
+        summaryCtx.stroke();
+
+        summaryCtx.beginPath();
+        summaryCtx.lineWidth = 20;
+        summaryCtx.lineCap = 'round';
+        summaryCtx.strokeStyle = '#1B6CB0';
+        summaryCtx.arc(150, 75, 60, 40, ((classScore * 2.25) / 100) * Math.PI);
+        summaryCtx.stroke();
+
+        summaryCtx.closePath();
+
+        const cat2Canvas = document.getElementById("category-2-canvas");
+        const cat2Ctx = cat2Canvas.getContext("2d");
+
+        cat2Ctx.clearRect(0, 0, cat2Canvas.width, cat2Canvas.height);
+
+        cat2Ctx.beginPath();
+        cat2Ctx.lineWidth = 15;
+        cat2Ctx.lineCap = 'round';
+        cat2Ctx.strokeStyle = '#BDBDBD';
+        cat2Ctx.arc(150, 75, 50, 40, 2.25 * Math.PI);
+        cat2Ctx.stroke();
+
+        cat2Ctx.beginPath();
+        cat2Ctx.lineWidth = 15;
+        cat2Ctx.lineCap = 'round';
+        cat2Ctx.strokeStyle = '#1B6CB0';
+        cat2Ctx.arc(150, 75, 50, 40, cat2Grade * Math.PI);
+        cat2Ctx.stroke();
+
+        cat2Ctx.closePath();
+    }, [classScore]);
+
     return (
         <div className="BBDetail-container">
             <dialog id="calc_dialog"><BBCalcDialog closeDialog={handleCloseDialog} categories={categories} onAddPredict={(e) => handleAddPredict(e)} /></dialog>
             <div className="BBDetail-top">
                 <div style={{ display: "flex", width: "100%" }}>
-                    <ArrowBack onClick={() => {window.location.href='/Bloomboard/classlist'}} sx={{ fontSize: "48px", padding: "0 12px", width: "5%", cursor: "pointer" }} />
+                    <ArrowBack onClick={() => { window.location.href = '/Bloomboard/classlist' }} sx={{ fontSize: "48px", padding: "0 12px", width: "5%", cursor: "pointer" }} />
                     <h1 className="text-bold text-align-center" style={{ width: "95%" }}>{data.className}</h1>
                 </div>
-                <div className="BBDetail-score-board">
-                    <div className="BBDetail-score-spot category">
+                <div className="BBDetail-grade-summary">
+                    <div>
                         <h3>Performance</h3>
+                        <canvas id='category-1-canvas' />
                         <h2>
                             {categoriesPoints && categoriesPoints.length > 0
                                 ? (categoriesPoints[0]?.points / categoriesPoints[0]?.maxPoints * 100).toFixed(2)
                                 : 'No data'}
                         </h2>
                     </div>
-                    <div className="BBDetail-score-spot total">
-                        <h3>Summary</h3>
-                        <h2>{classScore}</h2>
+                    <div>
+                        <canvas id='summaryCanvas' />
+                        <h1 className="text-bold">{classScore}</h1>
                     </div>
-                    <div className="BBDetail-score-spot category">
+                    <div>
                         <h3>Summative</h3>
+                        <canvas id='category-2-canvas' />
                         <h2>
                             {categoriesPoints && categoriesPoints.length > 0
                                 ? (categoriesPoints[1]?.points / categoriesPoints[1]?.maxPoints * 100).toFixed(2)
@@ -183,13 +259,9 @@ function BloomboardDetail() {
 export default BloomboardDetail;
 
 function BBDetail({ row }) {
-    const avgPercentScore = Number(row.AvgScore.slice(0, -1));
-    const maxPoint = Number(row.TotalScore);
-    const avgPointScore = (maxPoint * (avgPercentScore / 100)).toFixed(2);
-
     return (
         <div className="BB-row">
-            <div className={`BB-row-content ${row.isPrediction ? 'Prediction-cell': ""}`}>
+            <div className={`BB-row-content ${row.isPrediction ? 'Prediction-cell' : ""}`}>
                 <p>{row.Assignment.slice(0, -1)}</p>
                 <p>{row.Due}</p>
                 <p>{row.Category}</p>
@@ -197,7 +269,7 @@ function BBDetail({ row }) {
                     <p className="flex-justify-right">{row.Score ? row.Score : "---"}</p>
                     <p className="flex-justify-right margin-0" style={{ color: "var(--md-sys-color-tertiary)", fontSize: "medium" }}>Avg. {row.AvgScore}</p>
                 </div>
-                <Close sx={{placeSelf:"center",visibility:'hidden'}} />
+                <Close sx={{ placeSelf: "center", visibility: 'hidden' }} />
             </div>
         </div>
     )
@@ -239,8 +311,8 @@ function BBCalcDialog({ closeDialog, categories, onAddPredict }) {
         <div className="BBCalcDialog">
             <form action={handleSubmit} autoComplete="off">
                 <header>
-                    <h2><Calculate sx={{fontSize: "2rem"}} />Predict Calculator</h2>
-                    <button onClick={closeDialog}><Close sx={{fontSize:"3vw"}} /></button>
+                    <h2><Calculate sx={{ fontSize: "2rem" }} />Predict Calculator</h2>
+                    <button onClick={closeDialog}><Close sx={{ fontSize: "3vw" }} /></button>
                 </header>
                 <div>
                     <div>
