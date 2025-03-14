@@ -18,7 +18,7 @@ function BloomboardDetail() {
         let initCategoriesPoints = [];
 
         for (const category of data.categories) {
-            const categoryAndPoints = { category: category.Category, points: category.Points, maxPoints: category.MaxPoints }
+            const categoryAndPoints = { category: category.Category, points: Number(category.Points), maxPoints: Number(category.MaxPoints) }
 
             initCategoriesPoints.push(categoryAndPoints);
         }
@@ -239,10 +239,10 @@ function BloomboardDetail() {
             </div>
             <div className="BBDetail-body">
                 <div className="BBDetail-body-header">
-                    <h3 className="text-bold" style={{ width: "40%" }}>Assignment</h3>
-                    <h3 className="text-bold" style={{ width: "20%" }}>Due Date</h3>
-                    <h3 className="text-bold" style={{ width: "20%" }}>Category</h3>
-                    <h3 className="text-bold" style={{ width: "20%", display: "flex", justifyContent: "right" }}>Score</h3>
+                    <h3 className="text-bold padding-horizontal-16" >Assignment</h3>
+                    <h3 className="text-bold" >Due Date</h3>
+                    <h3 className="text-bold" >Category</h3>
+                    <h3 className="text-bold padding-horizontal-16" style={{marginLeft:"auto"}} >Score</h3>
                 </div>
                 <div className="BBDetail-body-calc cursor-pointer" onClick={handlePredictClick}>
                     <Calculate sx={{ fontSize: "36px" }} />
@@ -311,7 +311,7 @@ function BBCalcDialog({ closeDialog, categories, onAddPredict }) {
         <div className="BBCalcDialog">
             <form action={handleSubmit} autoComplete="off">
                 <header>
-                    <h2><Calculate sx={{ fontSize: "2rem" }} />Predict Calculator</h2>
+                    <h2><Calculate sx={{ fontSize: "2rem" }} />Predict Calc (slang for calculator)</h2>
                     <button onClick={closeDialog}><Close sx={{ fontSize: "3vw" }} /></button>
                 </header>
                 <div>
@@ -333,7 +333,7 @@ function BBCalcDialog({ closeDialog, categories, onAddPredict }) {
                     </div>
                 </div>
                 <footer>
-                    <button onClick={closeDialog}>Cancel</button>
+                    <button type="button" onClick={closeDialog}>Cancel</button>
                     <button type="submit">Add Predict</button>
                 </footer>
             </form>

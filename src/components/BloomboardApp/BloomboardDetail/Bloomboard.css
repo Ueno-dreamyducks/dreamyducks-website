@@ -30,12 +30,12 @@
 }
 
 .BBDetail-body-header {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 40% 20% 20% 20%;
     background-color: var(--bloomboard-primary);
     color: var(--bloomboard-on-primary);
     border-radius: 20px;
-    padding: 0 20px;
+    width: 100%;
 }
 
 .BBDetail-body-calc {
@@ -60,6 +60,11 @@
     font-size: large;
     display: grid;
     grid-template-columns: 40% 20% 20% 20%;
+
+    @media (max-width: 1060px) {
+        grid-template-columns: 40% 0% 30% 30%;
+        grid-column: 2;
+    }
 }
 
 .BB-row-content.Prediction-cell {
